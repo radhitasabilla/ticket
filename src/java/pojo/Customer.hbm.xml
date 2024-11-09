@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 11, 2022 2:34:12 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Customer" table="customer" catalog="nakamaticket" optimistic-lock="version">
+        <id name="idCustomer" type="java.lang.Integer">
+            <column name="id_customer" />
+            <generator class="identity" />
+        </id>
+        <property name="nama" type="string">
+            <column name="nama" length="55" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="55" not-null="true" />
+        </property>
+        <property name="telp" type="string">
+            <column name="telp" length="15" not-null="true" />
+        </property>
+        <property name="ktp" type="string">
+            <column name="ktp" length="20" not-null="true" />
+        </property>
+        <property name="pembayaran" type="string">
+            <column name="pembayaran" length="55" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

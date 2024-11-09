@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="utf-8"/>
+        <title>Admin Edit</title>
+        <!-- Bootstrap Styles --><link href="../bootstrap-5.2.2-dist/css/bootstrap.css" rel="stylesheet"/>
+        <!-- Custom Styles in This Files. --><link href="../css/style.css" rel="stylesheet"/>
+        <style>
+            .dataTable{
+                
+                border-color:  #f2f2f2;
+            }
+            .dataTableHeader{
+                text-align:center;
+                background:none repeat scroll 0 0 #d9d9d9;
+                padding-top:15px;
+                padding-bottom:15px;
+                padding-right:55px;
+                padding-left:55px;
+                
+            }
+            .dataTableRow{
+                background: white;;
+            }
+            .body{
+                background-color: #f2f2f2;
+            } 
+            
+        </style>
+    </h:head>
+
+    <h:body>
+        <!-- HEADER -->
+        <header>
+            <div class="collapse bg-dark" id="navbarHeader">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-md-7 py-4">
+                            <h2 class="text-white">Nakama Ticket</h2>
+                            <p class="text-muted">Our solution is end-to-end, from web ticketing marketplace, online booking for events.</p>
+                        </div>
+                        <div class="col-sm-4 offset-md-1 py-4">
+                            <h5 class="text-white">Want to use our services? or any problem?</h5>
+                            <h5 class="text-white">Contact us on</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="https://www.instagram.com/ryan.adiyantara/" class="text-white">Instagram</a></li>
+                                <li><a href="https://wa.me/6282128428935" class="text-white">Whatsapp</a></li>
+                                <li><a href="mailto:adiyantararyan@gmail.com" class="text-white">Email</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar navbar-dark bg-dark shadow-sm">
+                <div class="container">
+                    <a href="#" class="navbar-brand d-flex align-items-center">
+                        <img class="logo-web" width="120" height="40" src="../aset/LOGO1.jpg"/>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- BANNER + NAVIGATION BUTTON -->
+            <section class="py-2 text-center container">
+                <div class="row py-lg-5">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+                        <h1 class="fw-light">Hello Admin #{login.username}!</h1>
+                        <p>
+                            <h:form>
+                                <a href="AdminMainMenu.xhtml" class="btn btn-primary my-2">Index Admin</a>
+                                <h:commandLink class="btn btn-secondary my-2" value="Logout" action="AdminLogin.xhtml"/>
+                            </h:form>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTENT DISPLAY -->
+            <center>
+                <h:dataTable border="1" cellpadding="10" value="#{tiket.getAllRecords()}" var="adm" styleClass = "dataTable" headerClass = "dataTableHeader" rowClasses = "dataTableRow">
+                    <h:column>
+                        <f:facet name="header">ID</f:facet>
+                            #{adm.idTiket}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Title</f:facet>
+                            #{adm.judul}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Description</f:facet>
+                            #{adm.deskripsi}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Place</f:facet>
+                            #{adm.tempat}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Date and Time</f:facet>
+                            #{adm.tanggal}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Price</f:facet>
+                            #{adm.harga}
+                    </h:column> 
+                    <h:column>
+                        <f:facet name="header">Thumbnail</f:facet>
+                            #{adm.thumbnail}
+                    </h:column> 
+                </h:dataTable>
+            </center>
+            <br/>
+            <br/>
+            <!-- EDIT FORM -->
+            <div class="row g-5" style="width: 60%; margin-left: 20%;">          
+                <div class="col-md-12 col-lg-12">
+                    <center><h4 class="mb-3">Edit Content Form</h4></center>
+                    <h:form class="needs-validation">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label for="searchID" class="form-label">Search ID</label>
+                                <div class="input-group has-validation">
+                                    <h:inputText class="form-control" id="id" a:placeholder="ID" required="" value="#{tiket.idTiket}"/>
+                                </div>
+                            </div>
+                            <h:commandButton class="w-100 btn btn-primary btn-lg" type="submit" value="Search" action="#{tiket.getById()}"/>
+                            <div class="col-12">
+                                <label for="title" class="form-label">Title</label>
+                                <div class="input-group has-validation">
+                                    <h:inputText class="form-control" id="title" a:placeholder="Title of events" required="" value="#{tiket.judul}"/>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="place" class="form-label">Place</label>
+                                <div class="input-group has-validation">
+                                    <h:inputText  class="form-control" id="place" a:placeholder="Place of events" required="" value="#{tiket.tempat}"/>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="dateandtime" class="form-label">Date and Time<span class="text-muted"> (ex: 01 January 2022, 10:00-21:00 WIB)</span></label>
+                                <div class="input-group has-validation">
+                                    <h:inputText class="form-control" id="dateandtime" a:placeholder="Date and Time of event" required="" value="#{tiket.tanggal}"/>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="price" class="form-label">Price</label>
+                                <div class="input-group has-validation">
+                                    <h:inputText  class="form-control" id="Price" a:placeholder="Price of ticket" required="" value="#{tiket.harga}"/>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="description" class="form-label">Description</label>
+                                <div class="input-group has-validation">
+                                    <h:inputText class="form-control" id="Description" a:placeholder="Description of event" required="" value="#{tiket.deskripsi}"/>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="thumbnail" class="form-label">Thumbnail Source<span class="text-muted"> (ex: ../thumbnail/...)</span></label>
+                                <div class="input-group has-validation">
+                                    <h:inputText  class="form-control" id="thumbnail" a:placeholder="Thumbnail Source" required="" value="#{tiket.thumbnail}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4"/>
+                        <h:commandButton class="w-100 btn btn-primary btn-lg" type="submit" value="Edit" action="#{tiket.edit()}"/>
+                        <hr class="my-4"/>
+                        <h:commandButton class="w-100 btn btn-primary btn-lg" type="submit" value="Delete" action="#{tiket.delete()}"/>
+                        <hr class="my-4"/>
+                    </h:form>
+                </div>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <p class="col-md-4 mb-0 text-muted">&copy; 2022 Nakama Ticket, Inc</p>
+                <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                    <img class="logo-web" width="120" height="40" src="../aset/LOGO2.jpg"/>
+                </a>
+            </footer>
+        </div>      
+        <!-- Bootstrap Script -->
+        <script src="../bootstrap-5.2.2-dist/js/bootstrap.bundle.min.js"></script>   
+
+    </h:body>
+</html>
+
+

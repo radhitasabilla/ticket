@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 11, 2022 2:34:12 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Tiket" table="tiket" catalog="nakamaticket" optimistic-lock="version">
+        <id name="idTiket" type="java.lang.Integer">
+            <column name="id_tiket" />
+            <generator class="identity" />
+        </id>
+        <property name="judul" type="string">
+            <column name="judul" length="55" not-null="true" />
+        </property>
+        <property name="tempat" type="string">
+            <column name="tempat" length="55" not-null="true" />
+        </property>
+        <property name="tanggal" type="string">
+            <column name="tanggal" length="55" not-null="true" />
+        </property>
+        <property name="harga" type="string">
+            <column name="harga" length="55" not-null="true" />
+        </property>
+        <property name="deskripsi" type="string">
+            <column name="deskripsi" length="100" not-null="true" />
+        </property>
+        <property name="thumbnail" type="string">
+            <column name="thumbnail" length="65535" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

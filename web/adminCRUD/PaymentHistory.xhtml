@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Data Customer</title>
+        <link href="../bootstrap-5.2.2-dist/css/bootstrap.css" rel="stylesheet"/>
+    <!-- Custom Styles in This Files. --><link href="../css/style.css" rel="stylesheet"/>
+        <style>
+            .dataTable{
+                
+                border-color:  #f2f2f2;
+            }
+            .dataTableHeader{
+                text-align:center;
+                background:none repeat scroll 0 0 #d9d9d9;
+                padding-top:15px;
+                padding-bottom:15px;
+                padding-right:55px;
+                padding-left:55px;
+                
+            }
+            .dataTableRow{
+                background: white;;
+            }
+            
+        </style>
+    </h:head>
+    <h:body>
+       <header>
+            <div class="collapse bg-dark" id="navbarHeader">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-md-7 py-4">
+                            <h2 class="text-white">Nakama Ticket</h2>
+                            <p class="text-muted">Our solution is end-to-end, from web ticketing marketplace, online booking for events.</p>
+                        </div>
+                        <div class="col-sm-4 offset-md-1 py-4">
+                            <h5 class="text-white">Want to use our services? or any problem?</h5>
+                            <h5 class="text-white">Contact us on</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="https://www.instagram.com/ryan.adiyantara/" class="text-white">Instagram</a></li>
+                                <li><a href="https://wa.me/6282128428935" class="text-white">Whatsapp</a></li>
+                                <li><a href="mailto:adiyantararyan@gmail.com" class="text-white">Email</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar navbar-dark bg-dark shadow-sm">
+                <div class="container">
+                    <a href="#" class="navbar-brand d-flex align-items-center">
+                        <img class="logo-web" width="120" height="40" src="../aset/LOGO1.jpg"/>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <h:form>
+            <section class="py-2 text-center container">
+                <div class="row py-lg-5">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+                        <h1 class="fw-light">Cutomer Payment History</h1>
+                        <p>
+                          
+                                <a href="AdminMainMenu.xhtml" class="btn btn-primary my-2 ">Back</a>
+                                <a href="AdminLogin.xhtml" class="btn btn-secondary my-2 ">Logout</a>
+                        
+                        </p>
+                    </div>
+                </div>
+            </section> 
+
+            <center>
+            <h:dataTable border="1" cellpadding="10" value="#{customer.getAllRecords()}" var="cust" styleClass = "dataTable"
+            headerClass = "dataTableHeader"
+            rowClasses = "dataTableRow">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{cust.idCustomer}
+            </h:column>
+                
+                <h:column>
+                <f:facet name="header">Nama</f:facet>
+                #{cust.nama}
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Email</f:facet>
+                #{cust.email}
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Nomor Telepon</f:facet>
+                #{cust.telp}
+            </h:column>
+                
+                <h:column>
+                <f:facet name="header">Nomor KTP</f:facet>
+                #{cust.ktp}
+            </h:column>
+                
+                <h:column>
+                <f:facet name="header">Metode Bayar</f:facet>
+                #{cust.pembayaran}
+            </h:column>
+                
+            </h:dataTable>
+                </center>
+                <br/>
+                <br/>
+                <div class="container">
+      <main>
+                <div class="row g-5" style="width: 60%; margin-left: 20%;">          
+          <div class="col-md-12 col-lg-12">
+
+              <div class="row g-3">
+                <div class="col-12">
+                    
+                    <div class="col-12"> 
+                        <label>ID</label>
+                        <h:inputText class="form-control" id="id" a:placeholder="ID" required="" value="#{customer.idCustomer}"/><br/>
+                  <div class="input-group has-validation">
+                    <div class="invalid-feedback">
+                      Please enter ID.
+                    </div>
+                  </div>
+                </div>
+                    
+                    <h:commandButton class="w-100 btn btn-primary btn-lg" type="submit" value="Search" action="#{customer.getById()}"/><br/><br/>
+                  
+                    <label>Nama</label>
+                  <div class="input-group has-validation">
+                      <h:inputText class="form-control" id="title" a:placeholder="Nama Customer" required="" value="#{customer.nama}"/>
+                    <div class="invalid-feedback">
+                      Name is required.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  
+                    <label>Email</label>
+                  <div class="input-group has-validation">
+                      <h:inputText  class="form-control" id="place" a:placeholder="Email Customer" required="" value="#{customer.email}"/>
+                      <div class="invalid-feedback">
+                        Please enter the email.
+                      </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  
+                    <label>Nomor Telepon</label>
+                    <h:inputText class="form-control" id="dateandtime" a:placeholder="Nomor Telepon" required="" value="#{customer.telp}"/>
+                  <div class="input-group has-validation">
+                    <div class="invalid-feedback">
+                      Please enter the phone number.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  
+                    <label>Nomor KTP</label>
+                  <div class="input-group has-validation">
+                      <h:inputText  class="form-control" id="Price" a:placeholder="Nomor KTP" required="" value="#{customer.ktp}"/>
+                    <div class="invalid-feedback">
+                      KTP number event is required.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  
+                    <label>Metode Bayar</label>
+                  <div class="input-group has-validation">
+                      <h:inputText class="form-control" id="Description" a:placeholder="Metode Payment" required="" value="#{customer.pembayaran}"/>
+                    <div class="invalid-feedback">
+                      Payment Method event is required.
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+              <hr class="my-4"/>
+              <h:commandButton class="w-100 btn btn-primary btn-lg" type="submit" value="Edit" action="#{customer.edit()}"/>
+              <br/>
+              <br/>
+              <h:commandButton class="w-100 btn btn-primary btn-lg" type="submit" value="Delete" action="#{customer.delete()}"/>
+              
+
+          </div>
+        </div>
+      </main>
+        
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2022 Nakama Ticket</p>
+      </footer>
+    </div>
+    <!-- Bootstrap Script --><script src="../bootstrap-5.2.2-dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Styles in This Files. --><script src="script.js"></script>
+    </h:form>
+    </h:body>
+    
+</html>

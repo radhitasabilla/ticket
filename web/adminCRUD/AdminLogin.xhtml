@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+  <h:head>
+    <meta charset="utf-8"/>
+    <title>Admin Login</title>
+    <!-- Bootstrap Styles --><link href="../bootstrap-5.2.2-dist/css/bootstrap.css" rel="stylesheet"/>
+    <!-- Custom Styles in This Files. --><link href="../css/style.css" rel="stylesheet"/>
+  </h:head>
+
+  <body class="text-center customLogin" style="background-color: white;">
+    <main class="form-signin w-100 m-auto">
+      <h:form>
+        <img class="mb-4" width="300" height="100" src="../aset/LOGO2.jpg"/>
+        <h1 class="h3 mb-3 fw-normal">Admin Login Disini!</h1>
+        <div class="form-floating">
+          <h:inputText class="form-control" id="floatingInput" a:placeholder="Username" required="" value="#{login.username}"/>
+          <label for="floatingInput">Username</label>
+        </div>
+        <br/>
+        <div class="form-floating">
+          <h:inputSecret  class="form-control" id="floatingPassword" a:placeholder="Password" required="" value="#{login.password}"/>
+          <label for="floatingPassword">Password</label>
+        </div>
+        <br/>
+        <h:commandButton class="w-100 btn btn-lg btn-primary" value="Login" action="#{login.login_user()}"/>
+        <p class="mt-5 mb-3 text-muted">&copy; 2022 Nakama Ticket, Inc</p>
+      </h:form>
+    </main> 
+  </body>
+</html>
+
+
